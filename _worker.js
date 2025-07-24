@@ -139,7 +139,7 @@ export default {
 						transform: translateX(-50%);    /* 向左移动自身宽度的50%，实现水平居中 */
 						width: 100px;                   /* 下划线宽度为100像素 */
 						height: 4px;                    /* 下划线高度为4像素 */
-						background: linear-gradient(90deg, #6bdf8f, #ffffff, #a7f3d0, #34d399, #10b981, #6bdf8f);
+						background: linear-gradient(90deg, #6bdf8f, #a7f3d0, #34d399, #10b981);
 						background-size: 200% 100%;     /* 背景尺寸为200%，用于流光动画 */
 						animation: flowingLight 2s linear infinite;  /* 流光动画效果 */
 						border-radius: 2px;             /* 圆角半径2像素，让下划线边角更圆润 */
