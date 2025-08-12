@@ -1,9 +1,10 @@
 let urls = [
-	'https://blog.cmliussss.com#Cloudflare CDN',
+	'https://blog.cmliussss.com#Tencent CDN',
+	'https://ali.blog.cmliussss.com#Alibaba CDN',
 	'https://fastly.blog.cmliussss.com#Fastly CDN',
-	'https://gcore.blog.cmliussss.com#Gcore CDN',
 	'https://vercel.blog.cmliussss.com#Vercel CDN',
-	'https://netlify.blog.cmliussss.com#Netlify CDN'
+	'https://netlify.blog.cmliussss.com#Netlify CDN',
+	'https://blog.cmliussss.hidns.co#Cloudflare CDN'
 ];
 
 export default {
@@ -332,11 +333,13 @@ export default {
 					// 只需要修改 runTests 函数中处理最快结果的部分:
 
 					async function runTests() {
-						const results = await Promise.all(urls.map(url => {
+						const results = await Promise.all(urls.map((url, index) => {
 							const [testUrl, name] = url.split('#');
 							return testLatency(testUrl).then(result => ({
 								...result,
-								name
+								name,
+								originalUrl: testUrl,  // 保存原始的测试URL
+								index
 							}));
 						}));
 
@@ -368,7 +371,7 @@ export default {
 
 							const currentPath = '${path}';
 							const currentParams = '${params}';
-							const redirectUrl = fastest.url + currentPath + currentParams;
+							const redirectUrl = fastest.originalUrl + currentPath + currentParams;
 							window.location.href = redirectUrl;
 						}
 					}
